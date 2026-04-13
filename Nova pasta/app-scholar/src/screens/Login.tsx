@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { View, TextInput, Button, Text } from 'react-native';
+import { View, Text } from 'react-native';
+import Input from '../components/Input';
+import Button from '../components/Button';
 
 export default function Login({ navigation }: any) {
   const [email, setEmail] = useState('');
@@ -17,11 +19,19 @@ export default function Login({ navigation }: any) {
   }
 
   return (
-    <View style={{ padding: 20 }}>
-      <TextInput placeholder="Email" onChangeText={setEmail} />
-      <TextInput placeholder="Senha" secureTextEntry onChangeText={setSenha} />
+    <View style={{ padding: 20, justifyContent: 'center', flex: 1 }}>
+      <Text style={{ fontSize: 22, marginBottom: 20 }}>
+        Login
+      </Text>
 
-      {erro ? <Text style={{ color: 'red' }}>{erro}</Text> : null}
+      <Input placeholder="Email" onChangeText={setEmail} />
+      <Input placeholder="Senha" secureTextEntry onChangeText={setSenha} />
+
+      {erro ? (
+        <Text style={{ color: 'red', marginBottom: 10 }}>
+          {erro}
+        </Text>
+      ) : null}
 
       <Button title="Entrar" onPress={entrar} />
     </View>
